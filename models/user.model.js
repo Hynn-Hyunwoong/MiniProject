@@ -1,5 +1,3 @@
-const User = sequelize.import('./user.model');
-
 module.exports = (sequelize,Sequelize) => {
     class User extends Sequelize.Model {
         static initialize(){

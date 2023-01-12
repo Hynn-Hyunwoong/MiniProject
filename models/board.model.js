@@ -1,5 +1,5 @@
-const User = sequelize.import('./user.model');
 module.exports = (sequelize,Sequelize) => {
+    const User = require('./user.model')(sequelize, Sequelize);
     class Board extends Sequelize.Model {
         static initialize(){
             return this.init({
@@ -23,7 +23,7 @@ module.exports = (sequelize,Sequelize) => {
                     allowNull: false,
                 },
                 content : {
-                    type: Sequelize.STRING(25525),
+                    type: Sequelize.STRING(9999),
                     allowNull: false,
                 }
             },{
