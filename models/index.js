@@ -37,7 +37,7 @@ const test = async (sequelize) => {
   await Comment.create({ boardIdx: "2", commenter: "ab", content: "content" });
 };
 
-async () => {
+;(async () => {
   try {
     await sequelize.sync({ force: true });
     console.log("Sync successful");
@@ -45,7 +45,7 @@ async () => {
   } catch (error) {
     console.error(`Error while syncing: ${error}`);
   }
-};
+});
 
 module.exports = {
   sequelize,
