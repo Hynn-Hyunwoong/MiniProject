@@ -1,11 +1,11 @@
 module.exports = (sequelize, Sequelize) => {
-  class LikeIt extends Sequelize.Model {
+  class likeIt extends Sequelize.Model {
     static initialize() {
       return this.init(
         {
           boardIdx: {
             type: Sequelize.INTEGER,
-            allowNull: false,
+            allowNull: true,
             references: {
               model: "Board",
               key: "idx",
@@ -23,8 +23,19 @@ module.exports = (sequelize, Sequelize) => {
             onUpdate: "cascade",
             onDelete: "set null",
           },
+          idx: {
+            type: Sequelize.INTEGER,
+            autoIncrement: true,
+            primaryKey: true,
+          }
         },
         {
+          indexes: [
+            {
+              unique: true,
+              fields: ['likeName', 'boardIdx']
+            }
+          ],
           sequelize,
         }
       );
@@ -38,6 +49,6 @@ module.exports = (sequelize, Sequelize) => {
       });
     }
   }
-  LikeIt.initialize();
-  return LikeIt;
+  likeIt.initialize();
+  return likeIt;
 };

@@ -39,13 +39,13 @@ const test = async (sequelize) => {
 
 ;(async () => {
   try {
-    await sequelize.sync({ force: true });
+    await sequelize.sync({ force: false });
     console.log("Sync successful");
     test(sequelize);
   } catch (error) {
     console.error(`Error while syncing: ${error}`);
   }
-});
+})();
 
 module.exports = {
   sequelize,
